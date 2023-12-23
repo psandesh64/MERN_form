@@ -10,7 +10,12 @@ const App = () => {
   const handlePerson = (event) =>  {
     event.preventDefault()
     
+    const check=persons.forEach((person) => {
+    person.name === newName ? 
+    alert("Already contact Present"):
     setPersons(persons.concat({name:newName,id:persons[persons.length-1].id+1}))
+  }
+    )
     setNewName('')
   }
   const handleNameChange = (event) =>  {
