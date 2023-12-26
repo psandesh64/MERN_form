@@ -1,5 +1,15 @@
-[
-    { "name": "Arto Hellas", "id": "0" }, 
-    { "name": "Grahams", "id": "1" }
+{
+    "phonebook":[
+        { 
+            "name": "Arto Hellas",
+            "number":"9841388801",
+            "id": "0" 
+        }, 
+        {
+            "name": "Grahams",
+            "number":"9841388802",
+            "id": "1"
+        }
     
-]
+    ] 
+}
