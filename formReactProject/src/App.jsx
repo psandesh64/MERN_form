@@ -6,7 +6,7 @@ import viteLogo from '/vite.svg'
 const App = () => {
   const [persons, setPersons] = useState([{ name: 'Arto Hellas', id: 0 }, { name: 'Arto Hell', id: 1 }])
   const [newName, setNewName] = useState('')
-  const [newNumber, setNewNumber] = useState(0)
+  const [newNumber, setNewNumber] = useState('')
 
   const handlePerson = (event) => {
     event.preventDefault()
