@@ -1,7 +1,6 @@
 const Person =({person}) =>{
     return <div>
-        <p>{person.name}</p>
-        <p>{person.number}</p>
+        <p>{person.id} {person.name}  {person.number}</p>
     </div>
 }
 export default Person 

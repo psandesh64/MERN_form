@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 // import './App.css'
 import axios from 'axios'
-import Person from './components/phonebook'
+import Person from './components/person'
 
 
 const App = () => {
@@ -40,8 +40,7 @@ const App = () => {
       <br/><br/>
     </form>
       <h2>Numbers</h2>
-      {persons.map((data) => (
-        <p key={data.id}>{data.id}  {data.name} :: {data.number}</p>)
+      {persons.map((person) =><Person key={person.id} person={person}/>
       )}
     </div>
   )
