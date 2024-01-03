@@ -28,20 +28,25 @@ const App = () => {
     .then(response=>setPersons(persons.concat(response.data)))
     setformArray({'name':'','number':''})
   }
- 
+  const handleDelete = (id) => {
+    console.log('hi')
+    setPersons(persons.map(person => person.id !== id ))
+    // axios.delete(`http://localhost:3001/phonebook/${id}`)
+    // .then((response) => console.log('hi'))
+  };
   return (
     <div>
       <form onSubmit={handleChange}>
-      <label>Name : </label>
-      <input onChange={(event)=>setformArray({...formArray,'name':event.target.value})} value={formArray.name}/><br/><br/>
-      <label>Number : </label>
-      <input onChange={(event)=>setformArray({...formArray,'number':event.target.value})} value={formArray.number}/>
-      <button>Add</button>
-      <br/><br/>
-    </form>
+        <label>Name : </label>
+        <input onChange={(event)=>setformArray({...formArray,'name':event.target.value})} value={formArray.name}/><br/><br/>
+        <label>Number : </label>
+        <input onChange={(event)=>setformArray({...formArray,'number':event.target.value})} value={formArray.number}/>
+        <button>Add</button>
+        <br/><br/>
+      </form>
       <h2>Numbers</h2>
-      {persons.map((person) =><Person key={person.id} person={person}/>
-      )}
+      {persons.map((person) => <Person key={person.id} person={person} handleDeleteOf={()=>handleDelete(person.id)}/> )}
+    
     </div>
   )
 }
