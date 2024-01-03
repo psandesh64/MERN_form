@@ -28,12 +28,12 @@ const App = () => {
     .then(response=>setPersons(persons.concat(response.data)))
     setformArray({'name':'','number':''})
   }
+
   const handleDelete = (id) => {
-    console.log('hi')
-    setPersons(persons.map(person => person.id !== id ))
-    // axios.delete(`http://localhost:3001/phonebook/${id}`)
-    // .then((response) => console.log('hi'))
-  };
+    axios.delete(`http://localhost:3001/phonebook/${id}`)
+    .then((response) => setPersons(persons.filter(person => person.id !== id)))
+  }
+
   return (
     <div>
       <form onSubmit={handleChange}>
