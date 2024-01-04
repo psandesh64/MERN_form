@@ -16,11 +16,10 @@ const App = () => {
       setPersons(response.data)
     })
   },[])
-
   const handleChange = (e) => {
     e.preventDefault()
     const phonebookObj = {
-      id : persons.length + 1,
+      id : persons[persons.length-1].id + 1,
       name :formArray.name,
       number:formArray.number
     }
