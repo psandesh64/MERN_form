@@ -30,8 +30,10 @@ const App = () => {
   }
 
   const handleDelete = (id) => {
+    window.confirm("Do you want to delete this ") ?
     axios.delete(`http://localhost:3001/phonebook/${id}`)
     .then((response) => setPersons(persons.filter(person => person.id !== id)))
+    :console.log("Delete operation cancelled")
   }
 
   return (

@@ -1,19 +1,9 @@
 {
   "phonebook": [
     {
-      "id": 1,
+      "id": 5,
       "name": "sandesh",
-      "number": "2"
-    },
-    {
-      "id": 3,
-      "name": "324",
-      "number": "324"
-    },
-    {
-      "id": 4,
-      "name": "wer",
-      "number": "ewr"
+      "number": "123"
     }
   ]
 }
