@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 // import './App.css'
-import axios from 'axios'
 import Person from './components/person'
+import phonebook_ser from './services/phonebook'
 
 
 const App = () => {
@@ -11,8 +11,7 @@ const App = () => {
   const [formArray,setformArray]=useState({'name':'','number':''})
 
   useEffect(()=>{
-  const promise = axios.get('http://localhost:3001/phonebook')
-    promise.then(response => {
+    phonebook_ser.getAll().then(response => {
       setPersons(response.data)
     })
   },[])
@@ -37,10 +36,10 @@ const App = () => {
     });
   
     if (!foundPerson) {
-      axios.post("http://localhost:3001/phonebook", phonebookObj)
+      phonebook_ser.create(phonebookObj)
         .then(response => setPersons(persons.concat(response.data)));
     } else {
-      axios.put(`http://localhost:3001/phonebook/${newId}`, phonebookObj)
+      phonebook_ser.update(newId, phonebookObj)
         .then(response => setPersons(persons.map(person => (person.id === newId ? response.data : person))));
     }
   
@@ -49,7 +48,7 @@ const App = () => {
 
   const handleDelete = (id) => {
     window.confirm("Do you want to delete this ") ?
-    axios.delete(`http://localhost:3001/phonebook/${id}`)
+    phonebook_ser.clean(id)
     .then((response) => setPersons(persons.filter(person => person.id !== id)))
     :console.log("Delete operation cancelled")
   }
