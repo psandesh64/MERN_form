@@ -18,8 +18,9 @@ const App = () => {
   },[])
   const handleChange = (e) => {
     e.preventDefault()
+    const newId = persons.length > 0 ? persons[persons.length - 1].id + 1 : 1;
     const phonebookObj = {
-      id : persons[persons.length-1].id + 1,
+      id : newId,
       name :formArray.name,
       number:formArray.number
     }
