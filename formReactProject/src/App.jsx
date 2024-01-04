@@ -17,16 +17,34 @@ const App = () => {
     })
   },[])
   const handleChange = (e) => {
-    e.preventDefault()
-    const newId = persons.length > 0 ? persons[persons.length - 1].id + 1 : 1;
+    e.preventDefault();
+
+    let newId = persons.length > 0 ? persons[persons.length - 1].id + 1 : 1;
+  
     const phonebookObj = {
-      id : newId,
-      name :formArray.name,
-      number:formArray.number
+      id: newId,
+      name: formArray.name,
+      number: formArray.number
     }
-    axios.post("http://localhost:3001/phonebook",phonebookObj)
-    .then(response=>setPersons(persons.concat(response.data)))
-    setformArray({'name':'','number':''})
+  
+    let foundPerson = false;
+  
+    persons.forEach(person => {
+      if (person.name === phonebookObj.name) {
+        newId = person.id;
+        foundPerson = true;
+      }
+    });
+  
+    if (!foundPerson) {
+      axios.post("http://localhost:3001/phonebook", phonebookObj)
+        .then(response => setPersons(persons.concat(response.data)));
+    } else {
+      axios.put(`http://localhost:3001/phonebook/${newId}`, phonebookObj)
+        .then(response => setPersons(persons.map(person => (person.id === newId ? response.data : person))));
+    }
+  
+    setformArray({ 'name': '', 'number': '' });
   }
 
   const handleDelete = (id) => {
